@@ -1,1 +1,1 @@
-# typescript-personal-project
+# Personal Project TypeScript
