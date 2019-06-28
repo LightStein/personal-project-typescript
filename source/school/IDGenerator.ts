@@ -1,33 +1,31 @@
-export class IDGenerator{
-    type: string
-    code: string
-    constructor(type: string){
+export class IDGenerator {
+    public type: string;
+    public code: string;
+    constructor(type: string) {
         const time = new Date();
-        this.type = String(type).toLowerCase()
-        this.code = ((time.getMinutes() * time.getMilliseconds()).toString())
+        this.type = String(type).toLowerCase();
+        this.code = ((time.getMinutes() * time.getMilliseconds()).toString());
     }
 
-    getID(){
-        let header = ''
-        switch(this.type){
+    public getID() {
+        let header = "";
+        switch(this.type) {
             case "teacher":
-                header = "T"
+                header = "T";
                 break;
             case "pupil":
-                header = "P"
+                header = "P";
                 break;
             case "group":
-                header = "G"
+                header = "G";
                 break;
             case "gradebook":
-                header = "B"
+                header = "B";
                 break;
             case "subject":
-                header = "S"
+                header = "S";
                 break;
         }
-        return header + this.code
+        return header + this.code;
     }
-
-
 }

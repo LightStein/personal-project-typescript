@@ -1,13 +1,13 @@
-export { PupilsModel, Gender, Pupil } from './PupilsModel';
+export { PupilsModel, Gender, Pupil } from "./PupilsModel";
 
-export { TeachersModel, Teacher } from './TeachersModel';
+export { TeachersModel, Teacher } from "./TeachersModel";
 
-export { SubjectsModel } from './SubjectsModel'
+export { SubjectsModel } from "./SubjectsModel";
 
-export { LMSModel, Subject } from './LMSModel';
+export { LMSModel, Subject } from "./LMSModel";
 
-export { GroupsModel, Group } from './GroupsModel';
+export { GroupsModel, Group } from "./GroupsModel";
 
-export { GradebooksModel } from './GradebooksModel';
+export { GradebooksModel } from "./GradebooksModel";
 
-export { IDGenerator } from './IDGenerator'
+export { IDGenerator } from "./IDGenerator"

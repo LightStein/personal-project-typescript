@@ -1,39 +1,38 @@
-import { IDGenerator } from './IDGenerator'
-const IDGen = new IDGenerator("Pupil")
-export type Gender = 'male' | 'female'
-export interface Pupil {"name":{"first":string, "last":string}, "image":string, "dateOfBirth":string, "phones":Array<{"phone":string,"primary":boolean}>, "sex": "male" | "feSmale", "description"?:string}
-export class PupilsModel{
-    pupils: Map<string, Pupil>;
+import { IDGenerator } from "./IDGenerator";
+const IDGen = new IDGenerator("Pupil");
+export type Gender = "male" | "female";
+export interface Pupil {
+    "name": {"first": string, "last": string};
+    "image": string; "dateOfBirth": string;
+    "phones": Array<{"phone": string, "primary": boolean}>;
+     "sex": "male" | "feSmale"; "description"?: string; }
+export class PupilsModel {
+    public pupils: Map<string, Pupil>;
 
-    constructor(){
-        this.pupils = new Map()
+    constructor() {
+        this.pupils = new Map();
     }
-    
-    async add(pupil: Pupil){
+
+    public async add(pupil: Pupil) {
         // creating random ID starting with P (pupil)
-        let id:string = IDGen.getID();
-        
+        const id: string = IDGen.getID();
 
         // using update method for both updating and creating purposes
-        this.update(id, pupil)
-        return id
+        this.update(id, pupil);
+        return id;
     }
 
-
-    async read(targetId: string){
+    public async read(targetId: string) {
         // simply returning whole object
-        return this.pupils.get(targetId)
+        return this.pupils.get(targetId);
     }
 
-
-    async update(targetId: string, pupil: Pupil){
+    public async update(targetId: string, pupil: Pupil) {
         // appending a new pupil data to pupils object {id: Data}
-        this.pupils.set(targetId,pupil)
+        this.pupils.set(targetId, pupil);
     }
 
-
-    async remove(targetId: string){
-        this.pupils.delete(targetId)
+    public async remove(targetId: string) {
+        this.pupils.delete(targetId);
     }
 }
-
