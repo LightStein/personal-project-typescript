@@ -1,10 +1,9 @@
 import { IDGenerator } from './IDGenerator'
 const IDGen = new IDGenerator("Teacher")
 enum Gender {male, female}
-export interface Teacher {"name":{"first":string, "last":string},"image":string, "dateOfBirth":string, "emails":Array<{"email":string, "primary":boolean}>, "phones":Array<{"phone":string,"primary":boolean}>,"sex":Gender, "subjects":Array<{"subject":string}>, "description"?:string}
-
+export interface Teacher {"name":{"first":string, "last":string},"image":string, "dateOfBirth":string, "emails":Array<{"email":string, "primary":boolean}>, "phones":Array<{"phone":string,"primary":boolean}>,"sex": "male" | "female", "subjects":Array<{"subject":string}>, "description"?:string}
 export class TeachersModel{
-    teachers: Map<string,string | object | Array<object> | Gender>;
+    teachers: Map<string, Teacher>;
 
     constructor(){
         this.teachers = new Map();

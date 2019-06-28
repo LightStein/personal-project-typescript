@@ -1,15 +1,17 @@
-import { Group, Pupil, Subject, Teacher, Gender, IDGenerator} from './index';
+import { TeachersModel, GroupsModel, PupilsModel, LMSModel, Group, Pupil, Subject, Teacher, Gender, IDGenerator} from './index';
+
 const IDGen = new IDGenerator("Gradebook")
 interface Record {"pupilId":string, "teacherId": string, "subjectId": string, "lesson": Number, "mark":Number}
 interface Gradebook{"level":number, "groupId": string, "records":Map<string, Record>}
 export class GradebooksModel{
-    teachers: Map<string, string | object | Array<object> | Gender>
-    pupils: Map<string, string | object | Array<object> | Gender>
-    groups: Map<string, Group>
-    lms: Map<string, Subject>
+    teachers: TeachersModel
+    pupils: PupilsModel
+    groups: GroupsModel
+    lms: LMSModel
     gradebooks: Map<string, Gradebook>
+    
 
-    constructor(groups: Map<string,Group>, teachers: Map<string,string | object | Array<object> | Gender>, pupils: Map<string,string | object | Array<object> | Gender>, lms: Map<string,Subject>){
+    constructor(groups: GroupsModel, teachers: TeachersModel, pupils: PupilsModel, lms: LMSModel){
         this.teachers = teachers;
         this.pupils = pupils;
         this.groups = groups;
@@ -31,12 +33,13 @@ export class GradebooksModel{
     }
 
 
-    async read(gradebookId, pupilId){
+    async read(gradebookId: string, pupilId: string){
    
                     const pp = this.pupils.pupils.get(pupilId)
                     const tc = this.teachers.teachers.get(this.gradebooks.get(gradebookId).records.get(pupilId).teacherId)
                     const subj = this.lms.subjects.get(this.gradebooks.get(gradebookId).records.get(pupilId).subjectId)
                     const res_obj = {
+                        
                         name:`${pp.name.first} ${pp.name.last}`,
                         "records":[
                             {teacher:`${tc.name.first} ${pp.name.last}`,
@@ -50,7 +53,7 @@ export class GradebooksModel{
         return "No Data found"
     }
 
-    async readAll(gradebookId){
+    async readAll(gradebookId: string){
         let res = []
         for (let x of this.gradebooks){
             res.push(x)

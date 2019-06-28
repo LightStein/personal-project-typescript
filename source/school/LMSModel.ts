@@ -1,12 +1,12 @@
 export interface Subject {title: string, lessons: number, id:string}
-export class LMSModel{
-    id: string
-    subjects: Map<string,Subject>
-    
+export class LMSModel {
+    public id: string;
+    public subjects: Map<string,Subject>;
+
     constructor(){
         this.subjects = new Map()
     }
-    
+
     async remove(subject: Subject){
         for (let x in this.subjects)
         if (this.verify(subject)){

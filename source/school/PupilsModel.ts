@@ -1,10 +1,9 @@
 import { IDGenerator } from './IDGenerator'
 const IDGen = new IDGenerator("Pupil")
-enum Gender {male, female}
-interface Pupil {"name":{"first":string, "last":string}, "image":string, "dateOfBirth":string, "phones":Array<{"phone":string,"primary":boolean}>, "sex":Gender}
-
+export type Gender = 'male' | 'female'
+export interface Pupil {"name":{"first":string, "last":string}, "image":string, "dateOfBirth":string, "phones":Array<{"phone":string,"primary":boolean}>, "sex": "male" | "feSmale", "description"?:string}
 export class PupilsModel{
-    pupils: Map<string,string | object | Array<object> | Gender>;
+    pupils: Map<string, Pupil>;
 
     constructor(){
         this.pupils = new Map()
@@ -14,9 +13,7 @@ export class PupilsModel{
         // creating random ID starting with P (pupil)
         let id:string = IDGen.getID();
         
-        if (!pupil["description"]){
-            pupil["description"] = "no description"
-        }
+
         // using update method for both updating and creating purposes
         this.update(id, pupil)
         return id
@@ -36,7 +33,7 @@ export class PupilsModel{
 
 
     async remove(targetId: string){
-        delete this.pupils[targetId]
+        this.pupils.delete(targetId)
     }
 }
 

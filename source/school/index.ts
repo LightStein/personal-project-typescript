@@ -1,12 +1,12 @@
-export { PupilsModel } from './PupilsModel';
+export { PupilsModel, Gender, Pupil } from './PupilsModel';
 
-export { TeachersModel } from './TeachersModel';
+export { TeachersModel, Teacher } from './TeachersModel';
 
 export { SubjectsModel } from './SubjectsModel'
 
-export { LMSModel } from './LMSModel';
+export { LMSModel, Subject } from './LMSModel';
 
-export { GroupsModel } from './GroupsModel';
+export { GroupsModel, Group } from './GroupsModel';
 
 export { GradebooksModel } from './GradebooksModel';
 

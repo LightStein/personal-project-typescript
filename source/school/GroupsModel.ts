@@ -27,7 +27,7 @@ export class GroupsModel{
         this.groups.get(groupId)["pupils"].splice(i,1);
     }
 
-    async update(groupId:string, room:Number){
+    async update(groupId:string, room: {room: number}){
         this.groups.get(groupId)["room"] = room["room"]
     }
 
